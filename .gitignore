@@ -5,6 +5,10 @@ node_modules/
 
 #claude
 .claude/
+CLAUDE.md
+
+#Continue
+.Continue/
 
 # Expo
 .expo/

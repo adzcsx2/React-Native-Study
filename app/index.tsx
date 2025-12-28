@@ -43,7 +43,6 @@ export default function Home() {
         } else {
           // 第一次点击，显示提示
           lastBackPress.current = currentTime;
-          // Alert.alert("提示", "再按一次退出应用");
           toast("再按一次退出应用");
         }
       }
