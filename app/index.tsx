@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Gradient from "@/assets/icons/Gradient";
 import Logo from "@/assets/icons/Logo";
 import { Box } from "@/components/ui/box";
@@ -30,12 +30,10 @@ export default function Home() {
   const lastBackPress = useRef<number>(0);
   const { toast } = useToast();
 
-  const handleBackPress = () => {
-    if (router.canGoBack()) {
-      router.back();
-    } else {
-      // 已经是首页，双击退出逻辑
-      if (Platform.OS === "android") {
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      () => {
         const currentTime = Date.now();
         if (currentTime - lastBackPress.current < 2000) {
           // 2秒内再次点击，退出应用
@@ -45,10 +43,11 @@ export default function Home() {
           lastBackPress.current = currentTime;
           toast("再按一次退出应用");
         }
+        return true; // 阻止默认行为
       }
-    }
-  };
-
+    );
+    return () => backHandler.remove();
+  }, []);
   return (
     <Box className="flex-1 bg-background-300 h-[100vh]">
       <Box className="absolute h-[500px] w-[500px] lg:w-[700px] lg:h-[700px]">
@@ -71,7 +70,9 @@ export default function Home() {
           <Button
             size="md"
             className="bg-primary-500 px-6 py-2 rounded-full"
-            onPress={handleBackPress}
+            onPress={() => {
+              router.push("/tabs/(tabs)/tab1");
+            }}
           >
             <ButtonText>Explore Tab Navigation</ButtonText>
           </Button>

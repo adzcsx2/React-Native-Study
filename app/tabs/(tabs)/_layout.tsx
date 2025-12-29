@@ -21,7 +21,7 @@ export default function TabLayout() {
         className="text-lg  mt-20   align-center bg-primary-500 mx-20 rounded-lg"
         size="md"
         onPress={() => {
-          router.push("/");
+          router.back();
         }}
       >
         <ButtonText>Go back</ButtonText>
@@ -32,13 +32,14 @@ export default function TabLayout() {
           // to prevent a hydration error in React Navigation v6.
           headerShown: useClientOnlyValue(false, true),
         }}
+      
       >
         <Tabs.Screen
           name="tab1"
           options={{
-            title: "Tab 1",
-            tabBarIcon: ({ color }) => (
-              <TabBarIcon name="star-o" color={color} />
+            title: "Tab 123",
+            tabBarIcon: ({ color, focused }) => (
+              <TabBarIcon name={focused ? "star" : "star-o"} color={color} />
             ),
           }}
         />
@@ -46,8 +47,8 @@ export default function TabLayout() {
           name="tab2"
           options={{
             title: "Tab 2",
-            tabBarIcon: ({ color }) => (
-              <TabBarIcon name="star-o" color={color} />
+            tabBarIcon: ({ color, focused }) => (
+              <TabBarIcon name={focused ? "star" : "star-o"} color={color} />
             ),
           }}
         />
