@@ -3,6 +3,7 @@ import { Box } from "./ui/box";
 import { Text, TouchableOpacity } from "react-native";
 
 import { Image } from "@/components/ui/image";
+import useToast from "@/hooks/useToast";
 
 interface SplashScreenProps {
   handleSkip: () => void;
@@ -11,6 +12,7 @@ interface SplashScreenProps {
 export const SplashScreen = React.memo((props: SplashScreenProps) => {
   const [countDownFinish, setCountDownFinish] = useState(false);
   const [countDown, setCountDown] = useState(3);
+  const { toast } = useToast();
   useEffect(() => {
     const timer = setInterval(() => {
       setCountDown((prev) => {
@@ -27,6 +29,7 @@ export const SplashScreen = React.memo((props: SplashScreenProps) => {
 
   function handleSkip() {
     if (countDownFinish) {
+      toast("欢迎使用本应用");
       props.handleSkip();
     }
   }

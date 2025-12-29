@@ -8,19 +8,20 @@ import {
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { useEffect, useState } from "react";
-import { useColorScheme } from "@/components/useColorScheme";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { router, Stack, usePathname } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Fab, FabIcon, FabLabel } from "@/components/ui/fab";
 import { MoonIcon, SunIcon } from "@/components/ui/icon";
 import { HStack } from "@/components/ui/hstack";
 import { Image } from "@/components/ui/image";
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, Platform, View } from "react-native";
 import { Center } from "@/components/ui/center";
 import { Box } from "@/components/ui/box";
 import { Path } from "@/router/Path";
 import { SplashScreen } from "@/components/SplashScreen";
 import { Button } from "@/components/ui/button";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -46,12 +47,14 @@ function RootLayoutNav() {
   const [splashVisiable, setSpalashVisiable] = useState(true);
   const pathname = usePathname();
   const [colorMode, setColorMode] = useState<"light" | "dark">("light");
+  const insets = useSafeAreaInsets();
 
   return (
     <GluestackUIProvider mode={colorMode}>
       <ThemeProvider value={colorMode === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
+        <StatusBar style="auto" translucent backgroundColor="transparent" />
+        <Stack screenOptions={{ headerShown: false }}>
+          {/* <Stack.Screen name="index" options={{ headerShown: false }} /> */}
           <Stack.Screen name="modal" options={{ presentation: "modal" }} />
           <Stack.Screen name="tabs" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
@@ -67,15 +70,11 @@ function RootLayoutNav() {
             <FabIcon as={colorMode === "dark" ? MoonIcon : SunIcon} />
           </Fab>
         )}
-        <Box>
-          <Button onPress={() => router.push("/modal")}>
-            <Text>打开 Modal</Text>
-          </Button>
-        </Box>
         {splashVisiable && (
           <SplashScreen
             handleSkip={() => {
               setSpalashVisiable(false);
+              router.replace(Path.INDEX);
             }}
           ></SplashScreen>
         )}

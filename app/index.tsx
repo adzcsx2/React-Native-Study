@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Gradient from "@/assets/icons/Gradient";
 import Logo from "@/assets/icons/Logo";
 import { Box } from "@/components/ui/box";
-import { ScrollView, BackHandler, Platform, Alert } from "react-native";
+import { ScrollView, BackHandler, Platform, Alert, View } from "react-native";
 import { Text } from "@/components/ui/text";
 
 import { Button, ButtonText } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { useRouter, usePathname } from "expo-router";
 import { Icon } from "@/components/ui/icon";
 import useToast from "@/hooks/useToast";
 import { Path } from "@/router/Path";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const FeatureCard = ({ iconSvg: IconSvg, name, desc }: any) => {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
   const pathname = usePathname();
   const lastBackPress = useRef<number>(0);
   const { toast } = useToast();
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     const subscription = BackHandler.addEventListener(
@@ -55,7 +57,7 @@ export default function Home() {
   }, [pathname]);
   return (
     <Box className="flex-1 bg-background-300 h-[100vh]">
-      <Box className="absolute h-[500px] w-[500px] lg:w-[700px] lg:h-[700px]">
+      <Box className="absolute w-full h-full">
         <Gradient />
       </Box>
       {/* <ScrollView

@@ -1,7 +1,7 @@
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs, useRouter } from "expo-router";
-import { useClientOnlyValue } from "@/components/useClientOnlyValue";
+import { useClientOnlyValue } from "@/hooks/useClientOnlyValue";
 import { VStack } from "@/components/ui/vstack";
 
 import { Text } from "@/components/ui/text";

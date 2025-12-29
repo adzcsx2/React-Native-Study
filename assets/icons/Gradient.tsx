@@ -3,7 +3,7 @@ import { Svg, G, Ellipse, Defs, RadialGradient, Stop } from 'react-native-svg';
 
 const SvgComponent = () => {
   return (
-    <Svg width="965" height="1078" viewBox="0 0 965 1078" fill="none">
+    <Svg width="100%" height="100%" viewBox="0 0 965 1078" fill="none" preserveAspectRatio="none">
       <G opacity="1">
         <G>
           <Ellipse

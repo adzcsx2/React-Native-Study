@@ -14,12 +14,20 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "statusBar": {
+        "backgroundColor": "#00000000",
+        "translucent": true
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "statusBar": {
+        "backgroundColor": "#00000000",
+        "translucent": true
       },
       "edgeToEdgeEnabled": true,
       "package": "com.adzcsx2.test1"
