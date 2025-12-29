@@ -6,9 +6,10 @@ import { ScrollView, BackHandler, Platform, Alert } from "react-native";
 import { Text } from "@/components/ui/text";
 
 import { Button, ButtonText } from "@/components/ui/button";
-import { useRouter } from "expo-router";
+import { useRouter, usePathname } from "expo-router";
 import { Icon } from "@/components/ui/icon";
 import useToast from "@/hooks/useToast";
+import { Path } from "@/router/Path";
 
 const FeatureCard = ({ iconSvg: IconSvg, name, desc }: any) => {
   return (
@@ -27,13 +28,17 @@ const FeatureCard = ({ iconSvg: IconSvg, name, desc }: any) => {
 
 export default function Home() {
   const router = useRouter();
+  const pathname = usePathname();
   const lastBackPress = useRef<number>(0);
   const { toast } = useToast();
 
   useEffect(() => {
-    const backHandler = BackHandler.addEventListener(
+    const subscription = BackHandler.addEventListener(
       "hardwareBackPress",
       () => {
+        // 只在首页时生效
+        if (pathname !== "/") return false;
+
         const currentTime = Date.now();
         if (currentTime - lastBackPress.current < 2000) {
           // 2秒内再次点击，退出应用
@@ -46,8 +51,8 @@ export default function Home() {
         return true; // 阻止默认行为
       }
     );
-    return () => backHandler.remove();
-  }, []);
+    return () => subscription.remove();
+  }, [pathname]);
   return (
     <Box className="flex-1 bg-background-300 h-[100vh]">
       <Box className="absolute h-[500px] w-[500px] lg:w-[700px] lg:h-[700px]">
@@ -71,10 +76,18 @@ export default function Home() {
             size="md"
             className="bg-primary-500 px-6 py-2 rounded-full"
             onPress={() => {
-              router.push("/tabs/(tabs)/tab1");
+              router.push(Path.Tabs.tab1);
             }}
           >
             <ButtonText>Explore Tab Navigation</ButtonText>
+          </Button>
+          <Button
+            className="rounded-full"
+            onPress={() => {
+              router.push(Path.TEST);
+            }}
+          >
+            <ButtonText>go to test</ButtonText>
           </Button>
         </Box>
         <Box className="flex-1 justify-center items-center h-[20px] w-[300px] lg:h-[160px] lg:w-[400px]">

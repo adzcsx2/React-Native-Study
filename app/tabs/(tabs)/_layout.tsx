@@ -6,6 +6,8 @@ import { VStack } from "@/components/ui/vstack";
 
 import { Text } from "@/components/ui/text";
 import { Button, ButtonText } from "@/components/ui/button";
+import { Divider } from "@/components/ui/divider";
+import { View } from "react-native";
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
@@ -16,23 +18,15 @@ function TabBarIcon(props: {
 export default function TabLayout() {
   const router = useRouter();
   return (
-    <VStack className="flex-1">
-      <Button
-        className="text-lg  mt-20   align-center bg-primary-500 mx-20 rounded-lg"
-        size="md"
-        onPress={() => {
-          router.back();
-        }}
-      >
-        <ButtonText>Go back</ButtonText>
-      </Button>
+    <VStack className="flex-1 ">
       <Tabs
         screenOptions={{
+          tabBarLabelStyle: { fontSize: 16 },
+
           // Disable the static render of the header on web
           // to prevent a hydration error in React Navigation v6.
           headerShown: useClientOnlyValue(false, true),
         }}
-      
       >
         <Tabs.Screen
           name="tab1"

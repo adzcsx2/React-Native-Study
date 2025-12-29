@@ -6,9 +6,15 @@ node_modules/
 #claude
 .claude/
 CLAUDE.md
+nul
 
 #Continue
 .Continue/
+
+#android
+android/
+#ios
+ios/
 
 # Expo
 .expo/
