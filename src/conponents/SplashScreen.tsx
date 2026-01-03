@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Box } from "./ui/box";
+import { Box } from "../../components/ui/box";
 import { Text, TouchableOpacity } from "react-native";
 
 import { Image } from "@/components/ui/image";
-import useToast from "@/hooks/useToast";
+import useToast from "../hooks/useToast";
 
 interface SplashScreenProps {
   handleSkip: () => void;
 }
 
 export const SplashScreen = React.memo((props: SplashScreenProps) => {
+  const delaySecond = 0;
   const [countDownFinish, setCountDownFinish] = useState(false);
-  const [countDown, setCountDown] = useState(3);
+  const [countDown, setCountDown] = useState(delaySecond);
   const { toast } = useToast();
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCountDown((prev) => {

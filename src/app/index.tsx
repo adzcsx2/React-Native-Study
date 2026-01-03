@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import Gradient from "@/assets/icons/Gradient";
-import Logo from "@/assets/icons/Logo";
+import Gradient from "../assets/icons/Gradient";
+import Logo from "../assets/icons/Logo";
 import { Box } from "@/components/ui/box";
 import { ScrollView, BackHandler, Platform, Alert, View } from "react-native";
 import { Text } from "@/components/ui/text";
@@ -8,8 +8,8 @@ import { Text } from "@/components/ui/text";
 import { Button, ButtonText } from "@/components/ui/button";
 import { useRouter, usePathname } from "expo-router";
 import { Icon } from "@/components/ui/icon";
-import useToast from "@/hooks/useToast";
-import { Path } from "@/router/Path";
+import useToast from "../hooks/useToast";
+import { Paths } from "../router/Paths";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const FeatureCard = ({ iconSvg: IconSvg, name, desc }: any) => {
@@ -78,7 +78,7 @@ export default function Home() {
             size="md"
             className="bg-primary-500 px-6 py-2 rounded-full"
             onPress={() => {
-              router.push(Path.Tabs.tab1);
+              router.push(Paths.Tabs.tab1);
             }}
           >
             <ButtonText>Explore Tab Navigation</ButtonText>
@@ -86,7 +86,7 @@ export default function Home() {
           <Button
             className="rounded-full"
             onPress={() => {
-              router.push(Path.TEST);
+              router.push(Paths.TEST);
             }}
           >
             <ButtonText>go to test</ButtonText>

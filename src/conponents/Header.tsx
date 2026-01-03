@@ -1,5 +1,5 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Box } from "./ui/box";
+import { Box } from "../../components/ui/box";
 
 const Header = () => {
   const inset = useSafeAreaInsets();

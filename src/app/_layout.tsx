@@ -8,7 +8,6 @@ import {
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { useEffect, useState } from "react";
-import { useColorScheme } from "@/hooks/useColorScheme";
 import { router, Stack, usePathname } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Fab, FabIcon, FabLabel } from "@/components/ui/fab";
@@ -18,10 +17,11 @@ import { Image } from "@/components/ui/image";
 import { Text, TouchableOpacity, Platform, View } from "react-native";
 import { Center } from "@/components/ui/center";
 import { Box } from "@/components/ui/box";
-import { Path } from "@/router/Path";
-import { SplashScreen } from "@/components/SplashScreen";
+import { Paths } from "../router/Paths";
+import { SplashScreen } from "@/src/conponents/SplashScreen";
 import { Button } from "@/components/ui/button";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -47,38 +47,39 @@ function RootLayoutNav() {
   const [splashVisiable, setSpalashVisiable] = useState(true);
   const pathname = usePathname();
   const [colorMode, setColorMode] = useState<"light" | "dark">("light");
-  const insets = useSafeAreaInsets();
 
   return (
-    <GluestackUIProvider mode={colorMode}>
-      <ThemeProvider value={colorMode === "dark" ? DarkTheme : DefaultTheme}>
-        <StatusBar style="auto" translucent backgroundColor="transparent" />
-        <Stack screenOptions={{ headerShown: false }}>
-          {/* <Stack.Screen name="index" options={{ headerShown: false }} /> */}
-          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-          <Stack.Screen name="tabs" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-        {pathname === "/" && !splashVisiable && (
-          <Fab
-            onPress={() =>
-              setColorMode(colorMode === "dark" ? "light" : "dark")
-            }
-            className="m-6"
-            size="lg"
-          >
-            <FabIcon as={colorMode === "dark" ? MoonIcon : SunIcon} />
-          </Fab>
-        )}
-        {splashVisiable && (
-          <SplashScreen
-            handleSkip={() => {
-              setSpalashVisiable(false);
-              router.replace(Path.INDEX);
-            }}
-          ></SplashScreen>
-        )}
-      </ThemeProvider>
-    </GluestackUIProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <GluestackUIProvider mode={colorMode}>
+        <ThemeProvider value={colorMode === "dark" ? DarkTheme : DefaultTheme}>
+          <StatusBar style="auto" translucent backgroundColor="transparent" />
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            {/* <Stack.Screen name="index" options={{ headerShown: false }} /> */}
+            <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+          {pathname === "/" && !splashVisiable && (
+            <Fab
+              onPress={() =>
+                setColorMode(colorMode === "dark" ? "light" : "dark")
+              }
+              className="m-6"
+              size="lg"
+            >
+              <FabIcon as={colorMode === "dark" ? MoonIcon : SunIcon} />
+            </Fab>
+          )}
+          {splashVisiable && (
+            <SplashScreen
+              handleSkip={() => {
+                setSpalashVisiable(false);
+                router.replace(Paths.INDEX);
+              }}
+            ></SplashScreen>
+          )}
+        </ThemeProvider>
+      </GluestackUIProvider>
+    </GestureHandlerRootView>
   );
 }
