@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import Gradient from "../assets/icons/Gradient";
 import Logo from "../assets/icons/Logo";
-import { Box } from "@/components/ui/box";
+import { Box } from "~/libs/components/ui/box";
 import { ScrollView, BackHandler, Platform, Alert, View } from "react-native";
-import { Text } from "@/components/ui/text";
+import { Text } from "~/libs/components/ui/text";
 
-import { Button, ButtonText } from "@/components/ui/button";
+import { Button, ButtonText } from "~/libs/components/ui/button";
 import { useRouter, usePathname } from "expo-router";
-import { Icon } from "@/components/ui/icon";
+import { Icon } from "~/libs/components/ui/icon";
 import useToast from "../hooks/useToast";
 import { Paths } from "../router/Paths";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

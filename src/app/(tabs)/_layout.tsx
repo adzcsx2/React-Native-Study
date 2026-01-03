@@ -2,11 +2,11 @@ import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs, useRouter } from "expo-router";
 import { useClientOnlyValue } from "../../hooks/useClientOnlyValue";
-import { VStack } from "@/components/ui/vstack";
+import { VStack } from "~/libs/components/ui/vstack";
 
-import { Text } from "@/components/ui/text";
-import { Button, ButtonText } from "@/components/ui/button";
-import { Divider } from "@/components/ui/divider";
+import { Text } from "~/libs/components/ui/text";
+import { Button, ButtonText } from "~/libs/components/ui/button";
+import { Divider } from "~/libs/components/ui/divider";
 import { View } from "react-native";
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];

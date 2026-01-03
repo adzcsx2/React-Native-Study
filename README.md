@@ -87,14 +87,12 @@ npm run test           # 运行测试
 项目使用 NativeWind 4 + Tailwind CSS 进行样式管理：
 
 ```tsx
-import { View, Text } from 'react-native';
+import { View, Text } from "react-native";
 
 function MyComponent() {
   return (
     <View className="flex-1 items-center justify-center bg-white p-4">
-      <Text className="text-2xl font-bold text-gray-900">
-        Hello World
-      </Text>
+      <Text className="text-2xl font-bold text-gray-900">Hello World</Text>
     </View>
   );
 }
@@ -138,7 +136,7 @@ function MyComponent() {
 可以直接使用 `@/` 别名导入模块：
 
 ```tsx
-import MyComponent from '@/components/MyComponent';
+import MyComponent from "~/libs/components/MyComponent";
 ```
 
 ## 🧪 测试

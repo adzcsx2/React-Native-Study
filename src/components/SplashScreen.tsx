@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Box } from "../../components/ui/box";
+import { Box } from "~/libs/components/ui/box";
 import { Text, TouchableOpacity } from "react-native";
 
-import { Image } from "@/components/ui/image";
+import { Image } from "~/libs/components/ui/image";
 import useToast from "../hooks/useToast";
 
 interface SplashScreenProps {

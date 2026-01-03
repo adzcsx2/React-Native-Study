@@ -1,7 +1,7 @@
-import { Box } from "@/components/ui/box";
+import { Box } from "~/libs/components/ui/box";
 import { ScrollView } from "react-native-gesture-handler";
 
-import { Text } from "@/components/ui/text";
+import { Text } from "~/libs/components/ui/text";
 
 const ScrollViewTest = () => {
   return (

@@ -1,5 +1,5 @@
-import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import "@/global.css";
+import { GluestackUIProvider } from "~/libs/components/ui/gluestack-ui-provider";
+import "~/global.css";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DarkTheme,
@@ -10,16 +10,16 @@ import { useFonts } from "expo-font";
 import { useEffect, useState } from "react";
 import { router, Stack, usePathname } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Fab, FabIcon, FabLabel } from "@/components/ui/fab";
-import { MoonIcon, SunIcon } from "@/components/ui/icon";
-import { HStack } from "@/components/ui/hstack";
-import { Image } from "@/components/ui/image";
+import { Fab, FabIcon, FabLabel } from "~/libs/components/ui/fab";
+import { MoonIcon, SunIcon } from "~/libs/components/ui/icon";
+import { HStack } from "~/libs/components/ui/hstack";
+import { Image } from "~/libs/components/ui/image";
 import { Text, TouchableOpacity, Platform, View } from "react-native";
-import { Center } from "@/components/ui/center";
-import { Box } from "@/components/ui/box";
+import { Center } from "~/libs/components/ui/center";
+import { Box } from "~/libs/components/ui/box";
 import { Paths } from "../router/Paths";
-import { SplashScreen } from "@/src/conponents/SplashScreen";
-import { Button } from "@/components/ui/button";
+import { SplashScreen } from "@/components/SplashScreen";
+import { Button } from "~/libs/components/ui/button";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 

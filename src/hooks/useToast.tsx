@@ -3,7 +3,7 @@ import {
   Toast,
   ToastTitle,
   ToastDescription,
-} from "@/components/ui/toast";
+} from "~/libs/components/ui/toast";
 
 const useToast = () => {
   const toast = useGluestackToast();
