@@ -1,32 +1,43 @@
 import { Box } from "~/libs/components/ui/box";
-import { Button } from "~/libs/components/ui/button";
+import { Button, ButtonText } from "~/libs/components/ui/button";
 import { TouchableOpacity } from "react-native";
 
 import { Text } from "~/libs/components/ui/text";
 import { useRouter } from "expo-router";
 import { Paths } from "../../router/Paths";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { VStack } from "~/libs/components/ui/vstack";
 
 const Test = () => {
   const router = useRouter();
   return (
     <SafeAreaView>
-      <Box>
+      <VStack className="p-4" space="md">
         <Button
+          variant="solid"
+          size="md"
+          action="primary"
           onPress={() => {
             router.push(Paths.Tests.test);
           }}
         >
-          <Text>Test</Text>
+          <ButtonText>Test</ButtonText>
         </Button>
         <Button
           onPress={() => {
             router.push(Paths.Tests.scrollview);
           }}
         >
-          <Text>ScrollView</Text>
+          <ButtonText>ScrollView</ButtonText>
         </Button>
-      </Box>
+        <Button
+          onPress={() => {
+            router.push(Paths.Tests.native_tabs);
+          }}
+        >
+          <ButtonText>NativeTabs</ButtonText>
+        </Button>
+      </VStack>
     </SafeAreaView>
   );
 };

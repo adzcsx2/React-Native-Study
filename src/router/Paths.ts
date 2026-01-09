@@ -3,6 +3,7 @@ export const Paths = {
   Tests: {
     test: "/test/test",
     scrollview: "/test/scrollview",
+    native_tabs: "/test/native_tabs",
   },
   Tabs: {
     tab1: "/(tabs)/tab1",
