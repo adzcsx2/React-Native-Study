@@ -11,10 +11,7 @@ nul
 #Continue
 .Continue/
 
-#android
-android/
-#ios
-ios/
+
 
 # Expo
 .expo/
